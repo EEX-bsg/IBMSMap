@@ -113,7 +113,7 @@ function initialize() {
 	var mapTypeOverworld = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
 			var z = Math.pow(2, zoom-4);
-			return 'BesiegeMinecraftServer/Overworld/images/z' + z + '/' + (coord.x-2**zoom) + ',' + coord.y + '.png';
+			return 'https://raw.githubusercontent.com/EEX-bsg/IBMSMap/main/BesiegeMinecraftServer/overworld/images/z' + z + '/' + (coord.x-2**zoom) + ',' + coord.y + '.png';
 		},
 		tileSize: new google.maps.Size(256, 256), // size of image.  their native size to display 1 to 1
 		maxZoom: 7,
@@ -124,7 +124,7 @@ function initialize() {
 	var mapTypeNether = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
 			var z = Math.pow(2, zoom-4);
-			return 'BesiegeMinecraftServer/Nether/images/z' + z + '/' + coord.x + ',' + coord.y + '.png';
+			return 'https://raw.githubusercontent.com/EEX-bsg/IBMSMap/main/BesiegeMinecraftServer/nether/images/z' + z + '/' + coord.x + ',' + coord.y + '.png';
 		},
 		tileSize: new google.maps.Size(256, 256),
 		maxZoom: 7,
