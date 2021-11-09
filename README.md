@@ -1,0 +1,4 @@
+# IBMSMap
+IichikoBesiegerMinecraftServerMap
+voxelmap公式で公開されてたやつの丸パクリ
+main.jsでマーカー追加したりできるよ
