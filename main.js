@@ -26,7 +26,7 @@ var markerVisibility = true;
 const infoWindow = new google.maps.InfoWindow();
 function addMarker(x, y, icon, title) {
 	var marker = new google.maps.Marker({
-		position: new google.maps.LatLng(y / 256, x / 256),
+		position: new google.maps.LatLng(y / 256, x / 256 +16 ),
 		map: map,
 		icon: icon,
         label: title.charAt(0),
@@ -65,11 +65,11 @@ function ProjectionCartesian() {};
 
 // this is surely off as I am using images of size 256 and not 512.  someone smarter than me figure it out
 ProjectionCartesian.prototype.fromLatLngToPoint = function(latLng) {
-	return new google.maps.Point(latLng.lng() * 512 / 32 + 256, latLng.lat() * 512 / 32);
+	return new google.maps.Point(latLng.lng() * 512 / 32, latLng.lat() * 512 / 32);
 };
 
 ProjectionCartesian.prototype.fromPointToLatLng = function(point, noWrap) {
-	return new google.maps.LatLng(point.y / 512 * 32 + 256, point.x / 512 * 32, noWrap);
+	return new google.maps.LatLng(point.y / 512 * 32 , point.x / 512 * 32 , noWrap);
 };
 
 // icon definitions for markers
@@ -96,7 +96,7 @@ var iconPortal = {
 
 function initialize() {
 	var mapOptions = {
-		center: new google.maps.LatLng(0, 0),
+		center: new google.maps.LatLng(0, 16),
 		zoom: 4,
 		streetViewControl: false,
 		zoomControl: true,
