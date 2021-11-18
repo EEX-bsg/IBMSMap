@@ -58,9 +58,9 @@ function addMarker(x, z, icon, name, info, world, dimension, maxZoom, minZoom) {
 		icon: iconImages[icon],
         label: (icon==="text"? {
 			text: name,
-			color: "#d4d4d4",
+			color: "#ffcf30",
 			fontWeight: "bold",
-			fontSize:"30px",
+			fontSize:"25px",
 		}:""),
 		title: '<b>' + name + " (" + x + ", " + z + ")" + '</b>' + '<br>' + info,
 		world: world,
