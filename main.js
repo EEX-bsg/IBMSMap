@@ -8,7 +8,7 @@ $(window).resize(function () {
 });
 
 function setDIVHeight() {
-	const theDiv = $('div#map_canvas');
+	const theDiv = $('div#center');
 	const divTop = theDiv.offset().top;
 	const winHeight = $(window).height();
 	const divHeight = winHeight - divTop - 50;
