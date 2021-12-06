@@ -51,8 +51,9 @@ const iconImages = {
 // functions to add, hide, and delete markers
 const infoWindow = new google.maps.InfoWindow();
 function addMarker(x, z, icon, name, info, world, dimension, maxZoom, minZoom) {
+	const diff = 0.89;
 	const marker = new google.maps.Marker({
-		position: new google.maps.LatLng(z / 256, x / 256 +16 ),
+		position: new google.maps.LatLng(z / 256 * diff, x / 256 * diff +16 ),
 		coord: {"x": x, "z": z},
 		map: map,
 		icon: iconImages[icon],
@@ -190,10 +191,11 @@ function initialize() {
 		getTileUrl: function(coord, zoom) {
 			const z = Math.pow(2, zoom-4);
 			return 'https://raw.githubusercontent.com/EEX-bsg/IBMSMap/main/BesiegeMinecraftServer/overworld/images/z' + z + '/' + (coord.x-2**zoom) + ',' + coord.y + '.png';
+			//return 'BesiegeMinecraftServer/overworld/images/z' + z + '/' + (coord.x-2**zoom) + ',' + coord.y + '.png';
 		},
 		tileSize: new google.maps.Size(256, 256), // size of image.  their native size to display 1 to 1
 		maxZoom: 7,
-		minZoom: 1,
+		minZoom: 0,
 		name: 'Overworld',
 	});
 	
