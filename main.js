@@ -150,6 +150,21 @@ function displayCenterCoord(){
 	document.getElementById("center-coord").textContent = "x:"+center.x+", z:"+center.y;
 }
 
+function attachPin(latLng, map){
+	const zoom = map.getZoom();
+	const position = ProjectionCartesian.prototype.fromLatLngToPoint(latLng);
+	position.x = Math.floor((position.x-256)*16);
+	position.y = Math.floor(position.y*16);
+	infoWindow.close();
+	infoWindow.setContent(`x:${position.x}, z:${position.y}`);
+	infoWindow.open(map);
+	infoWindow.setPosition(latLng);
+	window.setTimeout(()=>{
+		map.setZoom(zoom);
+		map.panTo(latLng);
+	}, 1);
+}
+
 // custom projection
 // lat range is [-4,4] corresponding to y [-512,512] in the zoom level 0 image set
 // lng range is [-4,4] corresponding to x [-512,512] in the zoom level 0 image set
@@ -225,6 +240,9 @@ function initialize() {
 		toggleMarkersOnZoom();
 	})
 	google.maps.event.addListener(map, "center_changed", displayCenterCoord);
+	map.addListener("dblclick", (e)=>{
+		attachPin(e.latLng, map);
+	})
 	displayCenterCoord();
 	document.getElementById("copy-button").addEventListener("click", ()=>{
 		const copytext = document.getElementById("center-coord").textContent;
