@@ -395,7 +395,7 @@ const points = [
                         visible: true,
                     },
                     {
-                        name: "九段港湾",
+                        name: "九段港",
                         coord: { "x": 113, "z": 1139 },
                         maxZoom: 8,
                         minZoom: 2,

@@ -75,6 +75,9 @@ function addMarker(x, z, icon, name, info, world, dimension, maxZoom, minZoom) {
         infoWindow.setContent(marker.getTitle());
         infoWindow.open(marker.getMap(), marker);
 	});
+	marker.addListener("dblclick", () => {
+        map.panTo(marker.getPosition());
+	});
 	if(marker.world !== nowWorld){
 		marker.setVisible(false);
 	}else if(marker.dimension !== nowDimension){
