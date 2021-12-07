@@ -53,6 +53,7 @@ const infoWindow = new google.maps.InfoWindow();
 function addMarker(x, z, icon, name, info, world, dimension, maxZoom, minZoom) {
 	const diff = 0.89;
 	const marker = new google.maps.Marker({
+		name:name,
 		position: new google.maps.LatLng(z / 256 * diff, x / 256 * diff +16 ),
 		coord: {"x": x, "z": z},
 		map: map,
@@ -248,6 +249,8 @@ function initialize() {
 		const copytext = document.getElementById("center-coord").textContent;
 		navigator.clipboard.writeText(copytext).then(()=>{alert("copy:   "+copytext)});
 	})
+	document.getElementById("enter-search-btn").addEventListener("click", ()=>{searchEvent()});
+	document.getElementById("search-point").addEventListener("keydown", (e)=>{searchEvent()});
 	// add markers
 	addMarkers();
 	// addMarker(246, -81, "iconSpawn", "初期リス街");
